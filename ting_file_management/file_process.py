@@ -24,8 +24,12 @@ def remove(instance):
             f'Arquivo {value["nome_do_arquivo"]} removido com sucesso\n'
             )
     else:
-        sys.stdout.write('Não há elementos\n')
+        sys.stdout.write("Não há elementos\n")
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        value = instance.search(position)
+        sys.stdout.write(str(value))
+    except IndexError:
+        sys.stderr.write("Posição inválida")
